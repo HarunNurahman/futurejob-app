@@ -80,34 +80,31 @@ class OnBoardingPage extends StatelessWidget {
                 Container(
                   width: 200,
                   height: 45,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.transparent,
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(
+                        color: Colors.white,
+                        width: 2,
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
-                    onPressed: () {},
                     child: Text(
-                      'Get Started',
+                      'Sign In',
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: primaryColor,
+                        color: Colors.white,
                       ),
                     ),
                   ),
                 ),
+                const SizedBox(height: 50),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
