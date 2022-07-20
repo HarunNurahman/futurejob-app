@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:futurejob_app/pages/signin_page.dart';
 import 'package:futurejob_app/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,6 +9,7 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Stack(
         children: [
           // Background
@@ -50,11 +50,13 @@ class OnBoardingPage extends StatelessWidget {
               ],
             ),
           ),
+          // Bottom Button
           Align(
             alignment: Alignment.bottomCenter,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                // Get Started Button
                 Container(
                   width: 200,
                   height: 45,
@@ -77,11 +79,19 @@ class OnBoardingPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
+                // Sign In Button
                 Container(
                   width: 200,
                   height: 45,
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignInPage(),
+                        ),
+                      );
+                    },
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(
                         color: Colors.white,
