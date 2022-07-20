@@ -13,6 +13,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  
+  // Timer for splash screen
   @override
   void initState() {
     super.initState();
@@ -36,8 +38,10 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Logo
             Image.asset('assets/icons/ic_logo.png', height: 76),
             const SizedBox(height: 50),
+            // App Title
             Text(
               'FUTUREJOB',
               style: GoogleFonts.poppins(
