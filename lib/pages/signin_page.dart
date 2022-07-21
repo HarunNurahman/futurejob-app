@@ -1,12 +1,23 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:futurejob_app/shared.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  State<SignInPage> createState() => _SignInPageState();
+}
 
+class _SignInPageState extends State<SignInPage> {
+  bool isEmailValid = true;
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
     final bottomInset = MediaQuery.of(context).viewInsets.bottom;
 
     return Scaffold(
@@ -59,9 +70,27 @@ class SignInPage extends StatelessWidget {
                     const SizedBox(height: 8),
                     // Email Text Form Field
                     SizedBox(
-                      height: 45,
+                      height: 55,
                       child: TextFormField(
+                        textAlign: TextAlign.left,
+                        textAlignVertical: TextAlignVertical.center,
+                        controller: _emailController,
+                        onChanged: (value) {
+                          print(value);
+                          bool isValid = EmailValidator.validate(value);
+                          print(isValid);
+                          if (isValid) {
+                            setState(() {
+                              isEmailValid = true;
+                            });
+                          } else {
+                            setState(() {
+                              isEmailValid = false;
+                            });
+                          }
+                        },
                         decoration: InputDecoration(
+                          border: InputBorder.none,
                           fillColor: grayColor_2,
                           filled: true,
                           enabledBorder: OutlineInputBorder(
@@ -70,8 +99,16 @@ class SignInPage extends StatelessWidget {
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide.none,
+                            borderSide: BorderSide(
+                              color: isEmailValid ? purpleColor_2 : redColor,
+                            ),
                           ),
+                          hintText: '',
+                        ),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: isEmailValid ? purpleColor_2 : redColor,
                         ),
                       ),
                     ),
@@ -84,10 +121,12 @@ class SignInPage extends StatelessWidget {
                     const SizedBox(height: 8),
                     // Password Text Form Field
                     SizedBox(
-                      height: 45,
+                      height: 55,
                       child: TextFormField(
+                        controller: _passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
+                            border: InputBorder.none,
                           fillColor: grayColor_2,
                           filled: true,
                           enabledBorder: OutlineInputBorder(
@@ -96,8 +135,13 @@ class SignInPage extends StatelessWidget {
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide.none,
-                          ),
+                              borderSide: BorderSide(
+                                color: purpleColor_2,
+                              ),
+                            ),
+                            hintText: ''),
+                        style: const TextStyle(
+                          fontSize: 16,
                         ),
                       ),
                     ),
@@ -109,7 +153,7 @@ class SignInPage extends StatelessWidget {
                       child: TextButton(
                         onPressed: () {},
                         style: TextButton.styleFrom(
-                          backgroundColor: primaryColor,
+                          backgroundColor: purpleColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),

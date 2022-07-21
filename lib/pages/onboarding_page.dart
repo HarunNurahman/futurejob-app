@@ -73,7 +73,7 @@ class OnBoardingPage extends StatelessWidget {
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: primaryColor,
+                        color: purpleColor,
                       ),
                     ),
                   ),
