@@ -1,6 +1,5 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:futurejob_app/shared.dart';
 
 class SignInPage extends StatefulWidget {
@@ -139,9 +138,7 @@ class _SignInPageState extends State<SignInPage> {
                                 color: purpleColor_2,
                               ),
                             ),
-                            hintText: ''),
-                        style: const TextStyle(
-                          fontSize: 16,
+                          hintText: '',
                         ),
                       ),
                     ),
