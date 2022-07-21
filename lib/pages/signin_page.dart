@@ -161,8 +161,8 @@ class _SignInPageState extends State<SignInPage> {
                     const SizedBox(height: 10),
                     // Create New Account Button
                     Center(
-                      child: TextButton(
-                        onPressed: () {},
+                      child: InkWell(
+                        onTap: () {},
                         child: Text(
                           'Create New Account',
                           style: grayTextStyle.copyWith(
