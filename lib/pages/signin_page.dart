@@ -43,7 +43,7 @@ class SignInPage extends StatelessWidget {
                 Center(
                   child: Image.asset(
                     'assets/images/img_explore-jobs.png',
-                    height: 240,
+                    height: MediaQuery.of(context).size.height * 0.25,
                   ),
                 ),
                 const SizedBox(height: 40),
@@ -51,12 +51,13 @@ class SignInPage extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Email Text Field
+                    // Email Address
                     Text(
                       'Email Address',
                       style: grayTextStyle,
                     ),
                     const SizedBox(height: 8),
+                    // Email Text Form Field
                     SizedBox(
                       height: 45,
                       child: TextFormField(
@@ -75,12 +76,13 @@ class SignInPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    // Password Text Field
+                    // Password
                     Text(
                       'Password',
                       style: grayTextStyle,
                     ),
                     const SizedBox(height: 8),
+                    // Password Text Form Field
                     SizedBox(
                       height: 45,
                       child: TextFormField(
@@ -114,7 +116,21 @@ class SignInPage extends StatelessWidget {
                         ),
                         child: Text('Sign In', style: whiteTextStyle),
                       ),
-                    )
+                    ),
+                    const SizedBox(height: 10),
+                    // Create New Account Button
+                    Center(
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Create New Account',
+                          style: grayTextStyle.copyWith(
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ],
