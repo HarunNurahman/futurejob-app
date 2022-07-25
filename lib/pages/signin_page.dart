@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:futurejob_app/pages/signup_page.dart';
 import 'package:futurejob_app/shared.dart';
 
 class SignInPage extends StatefulWidget {
@@ -125,7 +126,7 @@ class _SignInPageState extends State<SignInPage> {
                         controller: _passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
-                            border: InputBorder.none,
+                          border: InputBorder.none,
                           fillColor: grayColor_2,
                           filled: true,
                           enabledBorder: OutlineInputBorder(
@@ -134,10 +135,10 @@ class _SignInPageState extends State<SignInPage> {
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(
-                                color: purpleColor_2,
-                              ),
+                            borderSide: BorderSide(
+                              color: purpleColor_2,
                             ),
+                          ),
                           hintText: '',
                         ),
                       ),
@@ -158,11 +159,18 @@ class _SignInPageState extends State<SignInPage> {
                         child: Text('Sign In', style: whiteTextStyle),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 12),
                     // Create New Account Button
                     Center(
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignUpPage(),
+                            ),
+                          );
+                        },
                         child: Text(
                           'Create New Account',
                           style: grayTextStyle.copyWith(
