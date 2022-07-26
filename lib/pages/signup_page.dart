@@ -13,6 +13,7 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   bool isEmailValid = true;
   bool isTextFilled = true;
+  bool isUploaded = false;
 
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
@@ -20,6 +21,100 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
+    Widget uploadImg() {
+      return Center(
+        child: InkWell(
+          onTap: () {
+            setState(() {
+              isUploaded = !isUploaded;
+            });
+          },
+          child: Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width * 0.32,
+                height: MediaQuery.of(context).size.width * 0.32,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: purpleColor,
+                  border: Border.all(
+                    color: purpleColor_2,
+                    width: 2,
+                  ),
+                ),
+                // Whitespace between the outer circle and the inner circle
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  width: MediaQuery.of(context).size.width * 0.30,
+                  height: MediaQuery.of(context).size.width * 0.30,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                  ),
+                  // Inner circle
+                  child: Container(
+                    padding: const EdgeInsets.all(5),
+                    width: MediaQuery.of(context).size.width * 0.28,
+                    height: MediaQuery.of(context).size.width * 0.28,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: grayColor_2,
+                    ),
+                    // Upload Icon
+                    child: const Icon(
+                      Icons.cloud_upload_sharp,
+                      color: Colors.white,
+                      size: 36,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget showImg() {
+      return Center(
+        child: InkWell(
+          onTap: () {
+            setState(() {
+              isUploaded = !isUploaded;
+            });
+          },
+          child: Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width * 0.32,
+                height: MediaQuery.of(context).size.width * 0.32,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: purpleColor,
+                  border: Border.all(
+                    color: purpleColor_2,
+                    width: 2,
+                  ),
+                ),
+                // Whitespace between the outer circle and the inner circle
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  width: MediaQuery.of(context).size.width * 0.30,
+                  height: MediaQuery.of(context).size.width * 0.30,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                  ),
+                  // Inner circle
+                  child: Image.asset('assets/images/img_profile_pic.png'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SafeArea(
@@ -42,49 +137,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
                 const SizedBox(height: 50),
-                Center(
-                  // Outer circle
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.32,
-                    height: MediaQuery.of(context).size.width * 0.32,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: purpleColor,
-                      border: Border.all(
-                        color: purpleColor_2,
-                        width: 2,
-                      ),
-                    ),
-                    // Whitespace between the outer circle and the inner circle
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      width: MediaQuery.of(context).size.width * 0.30,
-                      height: MediaQuery.of(context).size.width * 0.30,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
-                      ),
-                      // Inner circle
-                      child: Container(
-                        padding: const EdgeInsets.all(5),
-                        width: MediaQuery.of(context).size.width * 0.28,
-                        height: MediaQuery.of(context).size.width * 0.28,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: grayColor_2,
-                        ),
-                        // Upload Icon
-                        child: const Icon(
-                          Icons.cloud_upload_sharp,
-                          color: Colors.white,
-                          size: 36,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                isUploaded ? showImg() : uploadImg(),
                 const SizedBox(height: 30),
-                // Text Field
+                // Form Field
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -247,13 +302,12 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    // Full Name
+                    // Your Goal
                     Text(
                       'Your Goal (Optional)',
                       style: grayTextStyle,
                     ),
                     const SizedBox(height: 8),
-                    // Goal (optional)
                     SizedBox(
                       child: TextFormField(
                         textAlign: TextAlign.left,
@@ -308,7 +362,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    // Create New Account Button
+                    // Back to Sign In Button
                     Center(
                       child: InkWell(
                         onTap: () {
