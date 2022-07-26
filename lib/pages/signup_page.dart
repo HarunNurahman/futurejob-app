@@ -16,9 +16,9 @@ class _SignUpPageState extends State<SignUpPage> {
   bool isTextFilled = true;
   bool isUploaded = false;
 
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -322,6 +322,7 @@ class _SignUpPageState extends State<SignUpPage> {
         },
         child: Column(
           children: [
+            // Outer circle
             Container(
               width: MediaQuery.of(context).size.width * 0.32,
               height: MediaQuery.of(context).size.width * 0.32,
