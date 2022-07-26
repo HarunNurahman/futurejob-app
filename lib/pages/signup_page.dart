@@ -12,12 +12,11 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   bool isEmailValid = true;
-  bool isTextFilled = false;
+  bool isTextFilled = true;
 
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  
 
   @override
   Widget build(BuildContext context) {
@@ -96,15 +95,36 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     const SizedBox(height: 8),
                     SizedBox(
-                      height: 55,
                       child: TextFormField(
                         textAlign: TextAlign.left,
                         textAlignVertical: TextAlignVertical.center,
                         controller: _nameController,
                         decoration: InputDecoration(
-                          border: InputBorder.none,
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 20,
+                          ),
                           fillColor: grayColor_2,
                           filled: true,
+                          hintText: '',
+                          border: isTextFilled
+                              ? InputBorder.none
+                              : OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  borderSide: BorderSide(
+                                    color:
+                                        isTextFilled ? purpleColor_2 : redColor,
+                                  ),
+                                ),
+                          errorText: isTextFilled
+                              ? null
+                              : 'Please enter your full name',
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(100),
+                            borderSide: BorderSide(
+                              color: isTextFilled ? purpleColor_2 : redColor,
+                            ),
+                          ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide.none,
@@ -112,15 +132,14 @@ class _SignUpPageState extends State<SignUpPage> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide(
-                              color: purpleColor_2,
+                              color: isTextFilled ? purpleColor_2 : redColor,
                             ),
                           ),
-                          hintText: '',
                         ),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: purpleColor_2,
+                          color: isTextFilled ? purpleColor_2 : redColor,
                         ),
                       ),
                     ),
@@ -132,7 +151,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     const SizedBox(height: 8),
                     SizedBox(
-                      height: 55,
                       child: TextFormField(
                         textAlign: TextAlign.left,
                         textAlignVertical: TextAlignVertical.center,
@@ -152,9 +170,31 @@ class _SignUpPageState extends State<SignUpPage> {
                           }
                         },
                         decoration: InputDecoration(
-                          border: InputBorder.none,
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 20,
+                          ),
                           fillColor: grayColor_2,
                           filled: true,
+                          errorText: isEmailValid
+                              ? null
+                              : 'Please enter a valid email address',
+                          hintText: '',
+                          border: isEmailValid
+                              ? InputBorder.none
+                              : OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  borderSide: BorderSide(
+                                    color:
+                                        isEmailValid ? purpleColor_2 : redColor,
+                                  ),
+                                ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: BorderSide(
+                              color: redColor,
+                            ),
+                          ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide.none,
@@ -165,7 +205,6 @@ class _SignUpPageState extends State<SignUpPage> {
                               color: isEmailValid ? purpleColor_2 : redColor,
                             ),
                           ),
-                          hintText: '',
                         ),
                         style: TextStyle(
                           fontSize: 16,
@@ -182,11 +221,14 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     const SizedBox(height: 8),
                     SizedBox(
-                      height: 55,
                       child: TextFormField(
                         controller: _passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 20,
+                          ),
                           border: InputBorder.none,
                           fillColor: grayColor_2,
                           filled: true,
@@ -211,13 +253,16 @@ class _SignUpPageState extends State<SignUpPage> {
                       style: grayTextStyle,
                     ),
                     const SizedBox(height: 8),
+                    // Goal (optional)
                     SizedBox(
-                      height: 55,
                       child: TextFormField(
                         textAlign: TextAlign.left,
                         textAlignVertical: TextAlignVertical.center,
-                        controller: _nameController,
                         decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 20,
+                          ),
                           border: InputBorder.none,
                           fillColor: grayColor_2,
                           filled: true,
@@ -228,7 +273,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide(
-                              color: isEmailValid ? purpleColor_2 : redColor,
+                              color: purpleColor_2,
                             ),
                           ),
                           hintText: '',
@@ -236,7 +281,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: isTextFilled ? purpleColor_2 : redColor,
+                          color: purpleColor_2,
                         ),
                       ),
                     ),
@@ -246,7 +291,13 @@ class _SignUpPageState extends State<SignUpPage> {
                       width: MediaQuery.of(context).size.width * 1,
                       height: 45,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            _nameController.text.isEmpty
+                                ? isTextFilled = false
+                                : isTextFilled = true;
+                          });
+                        },
                         style: TextButton.styleFrom(
                           backgroundColor: purpleColor,
                           shape: RoundedRectangleBorder(
