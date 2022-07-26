@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:futurejob_app/pages/home_page.dart';
 import 'package:futurejob_app/pages/signup_page.dart';
 import 'package:futurejob_app/shared.dart';
 
@@ -149,7 +150,16 @@ class _SignInPageState extends State<SignInPage> {
                       width: MediaQuery.of(context).size.width * 1,
                       height: 45,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (isEmailValid) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
+                              ),
+                            );
+                          }
+                        },
                         style: TextButton.styleFrom(
                           backgroundColor: purpleColor,
                           shape: RoundedRectangleBorder(

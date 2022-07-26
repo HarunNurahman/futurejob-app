@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:futurejob_app/pages/home_page.dart';
 import 'package:futurejob_app/pages/signin_page.dart';
 import 'package:futurejob_app/shared.dart';
 
@@ -21,100 +22,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget uploadImg() {
-      return Center(
-        child: InkWell(
-          onTap: () {
-            setState(() {
-              isUploaded = !isUploaded;
-            });
-          },
-          child: Column(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width * 0.32,
-                height: MediaQuery.of(context).size.width * 0.32,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: purpleColor,
-                  border: Border.all(
-                    color: purpleColor_2,
-                    width: 2,
-                  ),
-                ),
-                // Whitespace between the outer circle and the inner circle
-                child: Container(
-                  padding: const EdgeInsets.all(5),
-                  width: MediaQuery.of(context).size.width * 0.30,
-                  height: MediaQuery.of(context).size.width * 0.30,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                  ),
-                  // Inner circle
-                  child: Container(
-                    padding: const EdgeInsets.all(5),
-                    width: MediaQuery.of(context).size.width * 0.28,
-                    height: MediaQuery.of(context).size.width * 0.28,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: grayColor_2,
-                    ),
-                    // Upload Icon
-                    child: const Icon(
-                      Icons.cloud_upload_sharp,
-                      color: Colors.white,
-                      size: 36,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
-
-    Widget showImg() {
-      return Center(
-        child: InkWell(
-          onTap: () {
-            setState(() {
-              isUploaded = !isUploaded;
-            });
-          },
-          child: Column(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width * 0.32,
-                height: MediaQuery.of(context).size.width * 0.32,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: purpleColor,
-                  border: Border.all(
-                    color: purpleColor_2,
-                    width: 2,
-                  ),
-                ),
-                // Whitespace between the outer circle and the inner circle
-                child: Container(
-                  padding: const EdgeInsets.all(5),
-                  width: MediaQuery.of(context).size.width * 0.30,
-                  height: MediaQuery.of(context).size.width * 0.30,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                  ),
-                  // Inner circle
-                  child: Image.asset('assets/images/img_profile_pic.png'),
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
-
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SafeArea(
@@ -182,7 +89,12 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide.none,
+                            borderSide: isTextFilled
+                                ? BorderSide.none
+                                : BorderSide(
+                                    color:
+                                        isTextFilled ? purpleColor_2 : redColor,
+                                  ),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
@@ -351,6 +263,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ? isTextFilled = false
                                 : isTextFilled = true;
                           });
+                          if (isTextFilled == true && isEmailValid) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
+                              ),
+                            );
+                          }
                         },
                         style: TextButton.styleFrom(
                           backgroundColor: purpleColor,
@@ -386,6 +306,102 @@ class _SignUpPageState extends State<SignUpPage> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget uploadImg() {
+    return Center(
+      child: InkWell(
+        splashFactory: NoSplash.splashFactory,
+        onTap: () {
+          setState(() {
+            isUploaded = !isUploaded;
+          });
+        },
+        child: Column(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 0.32,
+              height: MediaQuery.of(context).size.width * 0.32,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: purpleColor,
+                border: Border.all(
+                  color: purpleColor_2,
+                  width: 2,
+                ),
+              ),
+              // Whitespace between the outer circle and the inner circle
+              child: Container(
+                padding: const EdgeInsets.all(5),
+                width: MediaQuery.of(context).size.width * 0.30,
+                height: MediaQuery.of(context).size.width * 0.30,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                ),
+                // Inner circle
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  width: MediaQuery.of(context).size.width * 0.28,
+                  height: MediaQuery.of(context).size.width * 0.28,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: grayColor_2,
+                  ),
+                  // Upload Icon
+                  child: const Icon(
+                    Icons.cloud_upload_sharp,
+                    color: Colors.white,
+                    size: 36,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget showImg() {
+    return Center(
+      child: InkWell(
+        splashFactory: NoSplash.splashFactory,
+        onTap: () {
+          setState(() {
+            isUploaded = !isUploaded;
+          });
+        },
+        child: Column(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 0.32,
+              height: MediaQuery.of(context).size.width * 0.32,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: purpleColor,
+                border: Border.all(
+                  color: purpleColor_2,
+                  width: 2,
+                ),
+              ),
+              // Whitespace between the outer circle and the inner circle
+              child: Container(
+                padding: const EdgeInsets.all(5),
+                width: MediaQuery.of(context).size.width * 0.30,
+                height: MediaQuery.of(context).size.width * 0.30,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                ),
+                // Inner circle
+                child: Image.asset('assets/images/img_profile_pic.png'),
+              ),
+            ),
+          ],
         ),
       ),
     );
