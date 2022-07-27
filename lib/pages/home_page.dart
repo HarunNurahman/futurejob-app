@@ -14,6 +14,44 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Container(
+        margin: const EdgeInsets.only(top: 30),
+        child: BottomNavigationBar(
+          currentIndex: 0,
+          elevation: 0,
+          iconSize: 24,
+          showSelectedLabels: false,
+          unselectedItemColor: grayColor,
+          selectedItemColor: blackColor,
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/icons/ic_navbar_home.png'),
+              ),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/icons/ic_navbar_notification.png'),
+              ),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/icons/ic_navbar_favorite.png'),
+              ),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/icons/ic_navbar_profile.png'),
+              ),
+              label: '',
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -141,6 +179,17 @@ class _HomePageState extends State<HomePage> {
           companyName: 'Alphabet Inc.',
         ),
         const SizedBox(height: 17),
+        RecentList(
+          imgUrl: 'assets/icons/ic_instagram.png',
+          jobTitle: 'UI Designer',
+          companyName: 'Instagram Inc.',
+        ),
+        const SizedBox(height: 17),
+        RecentList(
+          imgUrl: 'assets/icons/ic_facebook.png',
+          jobTitle: 'Back-End Developer',
+          companyName: 'Meta',
+        ),
       ],
     );
   }

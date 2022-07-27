@@ -38,7 +38,7 @@ class RecentList extends StatelessWidget {
                   fontSize: 14,
                 ),
               ),
-              const SizedBox(height: 18),
+              const SizedBox(height: 17),
               Divider(
                 color: grayColor_2,
                 thickness: 2,
