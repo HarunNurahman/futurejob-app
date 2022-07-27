@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futurejob_app/shared.dart';
 import 'package:futurejob_app/widgets/job_card.dart';
+import 'package:futurejob_app/widgets/recent_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -134,31 +135,12 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         const SizedBox(height: 16),
-        Row(
-          children: [
-            Image.asset(
-              'assets/icons/ic_google.png',
-              width: 45,
-            ),
-            const SizedBox(width: 30),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Front-End Developer',
-                  style: blackTextStyle,
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  'Google Inc.',
-                  style: grayTextStyle.copyWith(
-                    fontSize: 14,
-                  ),
-                ),
-              ],
-            )
-          ],
-        )
+        RecentList(
+          imgUrl: 'assets/icons/ic_google.png',
+          jobTitle: 'Front-End Developer',
+          companyName: 'Alphabet Inc.',
+        ),
+        const SizedBox(height: 17),
       ],
     );
   }
