@@ -185,6 +185,7 @@ class _SignInPageState extends State<SignInPage> {
                           'Create New Account',
                           style: grayTextStyle.copyWith(
                             fontWeight: FontWeight.w300,
+                            fontSize: 14,
                           ),
                         ),
                       ),
