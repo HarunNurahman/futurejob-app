@@ -5,51 +5,59 @@ import 'package:futurejob_app/widgets/recent_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
-
+  
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(
-        margin: const EdgeInsets.only(top: 30),
-        child: BottomNavigationBar(
-          currentIndex: 0,
-          elevation: 0,
-          iconSize: 24,
-          showSelectedLabels: false,
-          unselectedItemColor: grayColor,
-          selectedItemColor: blackColor,
-          type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/icons/ic_navbar_home.png'),
+      bottomNavigationBar: Theme(
+        data: ThemeData(
+          splashFactory: NoSplash.splashFactory,
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+        ),
+        child: Container(
+          margin: const EdgeInsets.only(top: 30),
+          child: BottomNavigationBar(
+            currentIndex: 0,
+            elevation: 0,
+            iconSize: 24,
+            showSelectedLabels: false,
+            unselectedItemColor: grayColor,
+            selectedItemColor: blackColor,
+            type: BottomNavigationBarType.fixed,
+            items: const [
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage('assets/icons/ic_navbar_home.png'),
+                ),
+                label: '',
               ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/icons/ic_navbar_notification.png'),
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage('assets/icons/ic_navbar_notification.png'),
+                ),
+                label: '',
               ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/icons/ic_navbar_favorite.png'),
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage('assets/icons/ic_navbar_favorite.png'),
+                ),
+                label: '',
               ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/icons/ic_navbar_profile.png'),
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage('assets/icons/ic_navbar_profile.png'),
+                ),
+                label: '',
               ),
-              label: '',
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       body: SafeArea(
