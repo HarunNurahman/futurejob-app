@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futurejob_app/shared.dart';
-import 'package:futurejob_app/widgets/recent_card.dart';
+import 'package:futurejob_app/widgets/recentJob_card.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({

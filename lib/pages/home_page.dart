@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:futurejob_app/shared.dart';
 import 'package:futurejob_app/widgets/job_card.dart';
-import 'package:futurejob_app/widgets/recent_card.dart';
+import 'package:futurejob_app/widgets/recentJob_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
-  
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
