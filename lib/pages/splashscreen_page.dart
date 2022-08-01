@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:futurejob_app/pages/onboarding_page.dart';
-import 'package:futurejob_app/shared.dart';
+import 'package:futurejob_app/styles.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatefulWidget {

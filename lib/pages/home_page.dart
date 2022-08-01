@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futurejob_app/shared.dart';
+import 'package:futurejob_app/styles.dart';
 import 'package:futurejob_app/widgets/job_card.dart';
 import 'package:futurejob_app/widgets/recentJob_card.dart';
 

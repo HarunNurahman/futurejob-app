@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futurejob_app/pages/jobDetail_page.dart';
-import 'package:futurejob_app/shared.dart';
+import 'package:futurejob_app/styles.dart';
 
 class RecentList extends StatelessWidget {
   const RecentList({

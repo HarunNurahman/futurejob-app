@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futurejob_app/pages/category_page.dart';
-import 'package:futurejob_app/shared.dart';
+import 'package:futurejob_app/styles.dart';
 
 class JobCard extends StatelessWidget {
   const JobCard({

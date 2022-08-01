@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futurejob_app/pages/signin_page.dart';
 import 'package:futurejob_app/pages/signup_page.dart';
-import 'package:futurejob_app/shared.dart';
+import 'package:futurejob_app/styles.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OnBoardingPage extends StatelessWidget {
