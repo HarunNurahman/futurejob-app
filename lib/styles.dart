@@ -8,10 +8,17 @@ Color redColor = const Color(0xFFFD4F56);
 Color blackColor = const Color(0xFF272C2F);
 Color grayColor = const Color(0xFFB3B5C4);
 Color grayColor_2 = const Color(0xFFF1F0F5);
+Color grayColor_3 = const Color(0xFFA2A6B4);
+Color grayColor_4 = const Color(0xFFECEDF1);
 
 TextStyle grayTextStyle = GoogleFonts.poppins(
   fontSize: 16,
   color: grayColor,
+);
+
+TextStyle grayTextStyle_2 = GoogleFonts.poppins(
+  fontSize: 16,
+  color: grayColor_3,
 );
 
 TextStyle blackTextStyle = GoogleFonts.poppins(

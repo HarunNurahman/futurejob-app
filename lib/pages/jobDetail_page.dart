@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:futurejob_app/styles.dart';
 
-class DetailJob extends StatelessWidget {
+class DetailJob extends StatefulWidget {
   const DetailJob({Key? key}) : super(key: key);
+
+  @override
+  State<DetailJob> createState() => _DetailJobState();
+}
+
+class _DetailJobState extends State<DetailJob> {
+  bool isApplied = false;
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +19,16 @@ class DetailJob extends StatelessWidget {
           child: Center(
             child: Padding(
               padding: const EdgeInsets.only(
-                top: 80,
+                top: 30,
                 left: 24,
                 right: 24,
               ),
               child: Column(
                 children: [
+                  // Applied Message
+                  isApplied ? successApplyMessage() : const SizedBox(),
                   // Header (Company Logo, Job Desk, Company Name)
+                  const SizedBox(height: 20),
                   Image.asset(
                     'assets/icons/ic_google.png',
                     width: 60,
@@ -223,21 +233,7 @@ class DetailJob extends StatelessWidget {
                     child: Column(
                       children: [
                         // Apply Button
-                        Container(
-                          width: MediaQuery.of(context).size.width * 1 / 2,
-                          height: 45,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(60),
-                            color: purpleColor,
-                          ),
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              'Apply for Job',
-                              style: whiteTextStyle,
-                            ),
-                          ),
-                        ),
+                        isApplied ? cancelApplyButton() : applyButton(),
                         const SizedBox(height: 20),
                         // Message Recuiter Button
                         TextButton(
@@ -253,11 +249,78 @@ class DetailJob extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 35)
+                  const SizedBox(height: 35),
                 ],
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget applyButton() {
+    return Container(
+      width: MediaQuery.of(context).size.width * 1 / 2,
+      height: 45,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(60),
+        color: purpleColor,
+      ),
+      child: TextButton(
+        onPressed: () {
+          setState(() {
+            isApplied = !isApplied;
+          });
+        },
+        child: Text(
+          'Apply for Job',
+          style: whiteTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget cancelApplyButton() {
+    return Container(
+      width: MediaQuery.of(context).size.width * 1 / 2,
+      height: 45,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(60),
+        color: redColor,
+      ),
+      child: TextButton(
+        onPressed: () {
+          setState(() {
+            isApplied = !isApplied;
+          });
+        },
+        child: Text(
+          'Cancel Apply',
+          style: whiteTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget successApplyMessage() {
+    return Container(
+      decoration: BoxDecoration(
+        color: grayColor_4,
+        borderRadius: BorderRadius.circular(50),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 26,
+          vertical: 10,
+        ),
+        child: Text(
+          'You have applied this job and the\nrecruiter will contact you',
+          maxLines: 2,
+          style: grayTextStyle_2.copyWith(
+            fontSize: 14,
+          ),
+          textAlign: TextAlign.center,
         ),
       ),
     );
